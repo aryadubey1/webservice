@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Build Your Digital Presence</h1>
+        <p>Professional websites, web applications, and mobile apps</p>
+        <a href="{% url 'contact' %}" class="btn">Get Started</a>
+    </div>
+</section>
+
+<section class="services-preview">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            {% for service in services %}
+            <div class="service-card">
+                <i class="{{ service.icon }}"></i>
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description|truncatewords:20 }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="portfolio-preview">
+    <div class="container">
+        <h2>Recent Projects</h2>
+        <div class="portfolio-grid">
+            {% for project in portfolios %}
+            <div class="portfolio-card">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                <h3>{{ project.title }}</h3>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
